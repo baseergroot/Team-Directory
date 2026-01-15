@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+Team Directory Application
+This project is a simple full-stack "Team Directory" application built to demonstrate communication between a ColdFusion REST API and a React frontend.
+Tech Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Backend: Adobe ColdFusion
+Frontend: React (Vite)
+Database: Relational Database (SQL)
+API Format: REST / JSON
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Database Setup
+The database schema is defined in the setup.sql file.
+Steps:
 
-## React Compiler
+Create a database (or use an existing one)
+Run the SQL script:
+The script creates an Employees table and inserts sample records.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The ColdFusion backend connects to this database via a configured datasource.
 
-## Expanding the ESLint configuration
+Backend (ColdFusion)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Application.cfc
+Handles application-level configuration and CORS headers to allow communication with the React frontend.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Employee.cfc
+Exposes a REST endpoint that retrieves employee records from the database and returns them in JSON format.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Security best practices are followed using queryExecute for database access.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Frontend (React)
+
+Built using Vite + React
+Uses useEffect and useState to fetch data from the backend API
+Displays employees in a clean UI
+Includes a search feature to filter employees by name
+
+
+Running the Project
+
+Run the SQL script to set up the database
+Start the ColdFusion server
+Start the React frontend
+Access the application in the browser
+
+
+Notes
+This project focuses on clean API communication, JSON handling, and separation of concerns between the frontend and backend.
