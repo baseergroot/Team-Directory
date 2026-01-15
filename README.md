@@ -11,8 +11,10 @@ This project is a simple full-stack "Team Directory" application built to demons
 ---
 
 ## Database Setup
+The application uses a local PostgreSQL database.
 
-The database schema is defined in the `setup.sql` file.
+The schema and seed data are provided in `setup.sql`.  
+This script was executed once using the PostgreSQL terminal, and the database was then connected to ColdFusion via a configured datasource in the ColdFusion Administrator.
 
 ### Steps:
 1. Create a database (or use an existing one)
