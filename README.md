@@ -1,51 +1,58 @@
-Team Directory Application
+# Team Directory Application
+
 This project is a simple full-stack "Team Directory" application built to demonstrate communication between a ColdFusion REST API and a React frontend.
-Tech Stack
 
-Backend: Adobe ColdFusion
-Frontend: React (Vite)
-Database: Relational Database (SQL)
-API Format: REST / JSON
+## Tech Stack
+- Backend: Adobe ColdFusion
+- Frontend: React (Vite)
+- Database: Relational Database (SQL)
+- API Format: REST / JSON
 
+---
 
-Database Setup
-The database schema is defined in the setup.sql file.
-Steps:
+## Database Setup
 
-Create a database (or use an existing one)
-Run the SQL script:
-The script creates an Employees table and inserts sample records.
+The database schema is defined in the `setup.sql` file.
+
+### Steps:
+1. Create a database (or use an existing one)
+2. Run the SQL script:
+3. The script creates an `Employees` table and inserts sample records.
 
 The ColdFusion backend connects to this database via a configured datasource.
 
-Backend (ColdFusion)
+---
 
+## Backend (ColdFusion)
 
-Application.cfc
+- `Application.cfc`  
 Handles application-level configuration and CORS headers to allow communication with the React frontend.
 
-
-Employee.cfc
+- `Employee.cfc`  
 Exposes a REST endpoint that retrieves employee records from the database and returns them in JSON format.
 
+Security best practices are followed using `queryExecute` for database access.
 
-Security best practices are followed using queryExecute for database access.
+---
 
-Frontend (React)
+## Frontend (React)
 
-Built using Vite + React
-Uses useEffect and useState to fetch data from the backend API
-Displays employees in a clean UI
-Includes a search feature to filter employees by name
+- Built using Vite + React
+- Uses `useEffect` and `useState` to fetch data from the backend API
+- Displays employees in a clean UI
+- Includes a search feature to filter employees by name
 
+---
 
-Running the Project
+## Running the Project
 
-Run the SQL script to set up the database
-Start the ColdFusion server
-Start the React frontend
-Access the application in the browser
+1. Run the SQL script to set up the database
+2. Start the ColdFusion server
+3. Start the React frontend
+4. Access the application in the browser
 
+---
 
-Notes
+## Notes
+
 This project focuses on clean API communication, JSON handling, and separation of concerns between the frontend and backend.
