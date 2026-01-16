@@ -17,7 +17,7 @@ const App = () => {
   const [error, setError] = useState<string | null>(null);
 
   // Your ColdFusion API URL
-  const API_URL = 'http://localhost:8500/team-api/Employee.cfc?method=getEmployees';
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchEmployees = async () => {
