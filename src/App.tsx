@@ -55,7 +55,7 @@ const App = () => {
       <header className="bg-white border-b border-slate-200 py-8 px-4 sticky top-0 z-10 shadow-sm">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-blue-600">MED49 <span className="text-slate-800">Team</span></h1>
+            <h1 className="text-3xl font-extrabold tracking-tight text-blue-600">Team <span className="text-slate-800">Directory</span></h1>
             <p className="text-slate-500 mt-1">Bridging React & ColdFusion</p>
           </div>
 
