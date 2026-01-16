@@ -1,12 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Search, User, Briefcase, Mail, Loader2 } from 'lucide-react';
+import { Search, User, Briefcase, Loader2 } from 'lucide-react';
 
+
+interface EmployeeInterface {
+  id: number;
+  firstName: string;
+  lastName: string;
+  role: string;
+}
+  
 const App = () => {
-  const [employees, setEmployees] = useState([]);
+  const [employees, setEmployees] = useState<EmployeeInterface[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   // Your ColdFusion API URL
   const API_URL = 'http://localhost:8500/team-api/Employee.cfc?method=getEmployees';
@@ -19,6 +27,8 @@ const App = () => {
         
         // ColdFusion sometimes returns data as a string if not set correctly
         const data = typeof response.data === 'string' ? JSON.parse(response.data) : response.data;
+        
+        // console.log({data});
         
         setEmployees(data);
         setError(null);
@@ -102,12 +112,6 @@ const App = () => {
                   <span className="text-sm font-medium">{emp.role}</span>
                 </div>
 
-                <div className="pt-4 border-t border-slate-50 flex items-center justify-between">
-                  <button className="text-blue-600 text-sm font-semibold flex items-center gap-1 hover:underline">
-                    View Profile
-                  </button>
-                  <Mail className="w-5 h-5 text-slate-300 hover:text-blue-500 cursor-pointer transition-colors" />
-                </div>
               </div>
             ))}
           </div>
